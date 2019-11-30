@@ -1,15 +1,14 @@
 import React from "react";
 import "./App.css";
+import Navbar from "./components/layout/Navbar";
 
 class App extends React.Component {
-  constructor(){
-    super(){
-
-    }
+  render() {
+    return (
+      <div className="App">
+        <Navbar title={"Github viewer"} />
+      </div>
+    );
   }
-
-  render(){
-  return <div className="App"></div>;
-}
 }
 export default App;
