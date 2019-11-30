@@ -8,7 +8,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar title={"Github viewer"} />
-        <Users />
+        <div className="container">
+          <Users />
+        </div>
       </div>
     );
   }

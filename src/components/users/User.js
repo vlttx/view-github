@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class User extends Component {
-  render() {
-    const { login, avatar_url, html_url } = this.props.user;
-    return <div className="card text-center">User</div>;
-  }
-}
+const User = props => {
+  const { login, avatar_url, html_url } = props.user;
+  return <div className="card text-center">User</div>;
+};
+
+export default User;
