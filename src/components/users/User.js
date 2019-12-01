@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const User = props => {
   const { login, avatar_url, html_url } = props.user;
-  return <div className="card text-center">User</div>;
+  return <div className="card text-center"></div>;
 };
 
 User.propTypes = {
