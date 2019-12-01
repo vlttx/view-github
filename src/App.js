@@ -72,7 +72,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <Navbar title={"Github viewer"} />
+          <Navbar title={" Github viewer"} />
 
           <div className="container">
             <Alert alert={alert} />
