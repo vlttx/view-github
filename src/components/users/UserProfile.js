@@ -44,8 +44,8 @@ export default class UserProfile extends Component {
         ) : (
           <i className="fas fa-times-circle text-danger" />
         )}
-        <div class="card gird-2">
-          <div class="all-center">
+        <div className="card gird-2">
+          <div className="all-center">
             <img
               src={avatar_url}
               className="round-img"
