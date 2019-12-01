@@ -6,6 +6,7 @@ import axios from "axios";
 import Search from "./components/users/Search";
 import Alert from "./components/layout/Alert";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import About from "./components/pages/About";
 
 class App extends React.Component {
   state = {
@@ -66,6 +67,7 @@ class App extends React.Component {
                   </Fragment>
                 )}
               />
+              <Route exact path="/about" component={About} />
             </Switch>
           </div>
         </div>
