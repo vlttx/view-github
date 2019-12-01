@@ -7,6 +7,7 @@ import Search from "./components/users/Search";
 import Alert from "./components/layout/Alert";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import About from "./components/pages/About";
+import UserProfile from "./components/users/UserProfile";
 
 class App extends React.Component {
   state = {
@@ -54,7 +55,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { users, loading, alert } = this.state;
+    const { users, loading, alert, user } = this.state;
     return (
       <BrowserRouter>
         <div className="App">
@@ -79,6 +80,18 @@ class App extends React.Component {
                 )}
               />
               <Route exact path="/about" component={About} />
+              <Route
+                exact
+                path="/user/:login"
+                render={props => (
+                  <UserProfile
+                    {...props}
+                    getUser={this.getUser}
+                    user={user}
+                    loading={loading}
+                  />
+                )}
+              />
             </Switch>
           </div>
         </div>
