@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import "./App.css";
 import Navbar from "./components/layout/Navbar";
 import Users from "./components/users/Users";
@@ -8,10 +8,9 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import About from "./components/pages/About";
 import UserProfile from "./components/users/UserProfile";
 import GithubState from "./context/github/GithubState";
+import AlertState from "./context/alert/AlertState";
 
 const App = () => {
-  const [alert, setAlert] = useState(null);
-
   // useEffect(
   //   () => {
   //     setLoading(true);
@@ -31,36 +30,33 @@ const App = () => {
 
   //set alert
 
-  const getAlert = (msg, type) => {
-    setAlert({ msg, type });
-    setTimeout(() => setAlert(null), 5000); //make alert go away after 5seconds
-  };
-
   return (
     <GithubState>
-      <BrowserRouter>
-        <div className="App">
-          <Navbar title={" Github viewer"} />
+      <AlertState>
+        <BrowserRouter>
+          <div className="App">
+            <Navbar title={" Github viewer"} />
 
-          <div className="container">
-            <Alert alert={alert} />
-            <Switch>
-              <Route
-                exact
-                path="/"
-                render={props => (
-                  <Fragment>
-                    <Search setAlert={getAlert} />
-                    <Users />
-                  </Fragment>
-                )}
-              />
-              <Route exact path="/about" component={About} />
-              <Route exact path="/user/:login" component={UserProfile} />
-            </Switch>
+            <div className="container">
+              <Alert alert={alert} />
+              <Switch>
+                <Route
+                  exact
+                  path="/"
+                  render={props => (
+                    <Fragment>
+                      <Search />
+                      <Users />
+                    </Fragment>
+                  )}
+                />
+                <Route exact path="/about" component={About} />
+                <Route exact path="/user/:login" component={UserProfile} />
+              </Switch>
+            </div>
           </div>
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
+      </AlertState>
     </GithubState>
   );
 };
