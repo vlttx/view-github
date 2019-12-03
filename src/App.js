@@ -11,7 +11,6 @@ import UserProfile from "./components/users/UserProfile";
 import GithubState from "./context/github/GithubState";
 
 const App = () => {
-  const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
