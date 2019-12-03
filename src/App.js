@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import "./App.css";
 import Navbar from "./components/layout/Navbar";
 import Users from "./components/users/Users";
@@ -11,38 +11,25 @@ import UserProfile from "./components/users/UserProfile";
 import GithubState from "./context/github/GithubState";
 
 const App = () => {
-  const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
-  useEffect(
-    () => {
-      setLoading(true);
-      const loadData = async () => {
-        const res = await axios.get(
-          `https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-        );
-        setUsers(res.data.items);
-        setLoading(false);
-      };
-      loadData();
-    },
+  // useEffect(
+  //   () => {
+  //     setLoading(true);
+  //     const loadData = async () => {
+  //       const res = await axios.get(
+  //         `https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+  //       );
+  //       setUsers(res.data.items);
+  //       setLoading(false);
+  //     };
+  //     loadData();
+  //   },
 
-    //eslint-disable-next-line
-    []
-  );
-
-  //get a single github user
-
-  const getUser = async username => {
-    setLoading(true);
-    const res = await axios.get(
-      `https://api.github.com/users/${username.login}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-    );
-    setUser(res.data);
-    setLoading(false);
-  };
+  //eslint-disable-next-line
+  //   []
+  // );
 
   //get userRepos
 
@@ -88,11 +75,8 @@ const App = () => {
                 render={props => (
                   <UserProfile
                     {...props}
-                    getUser={getUser}
                     getUserRepos={getUserRepos}
-                    user={user}
                     repos={repos}
-                    loading={loading}
                   />
                 )}
               />
