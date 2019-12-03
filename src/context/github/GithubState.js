@@ -20,6 +20,10 @@ const GithubState = props => {
 
   const [state, dispatch] = useReducer(GithubReducer, initialState);
 
+  //clear users from state
+
+  const clearUsers = () => dispatch({ type: CLEAR_USERS });
+
   //search github users
   const searchUsers = async text => {
     setLoading();
@@ -29,7 +33,7 @@ const GithubState = props => {
 
     dispatch({
       type: SEARCH_USERS,
-      payload: res.data
+      payload: res.data.items
     });
   };
 
@@ -44,7 +48,8 @@ const GithubState = props => {
         user: state.user,
         repos: state.repos,
         loading: state.loading,
-        searchUsers
+        searchUsers,
+        clearUsers
       }}
     >
       {props.children}
